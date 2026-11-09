@@ -1,0 +1,29 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Airline SaaS Core API
+  Deployed as a serverless application on AWS Lambda and API Gateway.
+
+Globals:
+  Function:
+    Timeout: 30
+    MemorySize: 512
+    Environment:
+      Variables:
+        DJANGO_SETTINGS_MODULE: config.settings
+        # In production, these would come from AWS Secrets Manager or SSM
+        MONGO_URI: mongodb+srv://user:pass@cluster.mongodb.net/airline_saas
+
+Resources:
+  DjangoFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      Handler: config.wsgi.lambda_handler # We would use a library like zappa or aws-wsgi
+      Runtime: python3.12
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: ANY
