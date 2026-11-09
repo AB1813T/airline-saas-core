@@ -7,6 +7,7 @@ urlpatterns = [
     
     # Our APIs
     path("api/v1/", include("apps.core.urls")),
+    path("api/v1/", include("apps.flights.urls")),
     
     # Swagger Documentation
     path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
