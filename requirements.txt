@@ -1,0 +1,15 @@
+Django>=5.0,<5.1
+djangorestframework>=3.15
+mongoengine>=0.27
+pymongo>=4.6
+dnspython>=2.4
+python-decouple>=3.8
+drf-spectacular>=0.27
+django-cors-headers>=4.3
+
+# NOTE: On Python 3.15 / Windows, PyYAML has no pre-built wheel and requires
+# MSVC Build Tools to compile. Workaround (no compiler needed):
+#   $env:PYYAML_FORCE_LIBYAML=0
+#   pip install pyyaml --no-binary pyyaml
+#   Remove-Item Env:\PYYAML_FORCE_LIBYAML
+# Then run: pip install -r requirements.txt
