@@ -46,8 +46,11 @@ INSTALLED_APPS = [
     "corsheaders",
     
     # Local apps
-    "apps.core",  # <-- Add this
+    "apps.core",  
     "apps.flights",
+    "apps.bookings",
+    "apps.loyalty",
+    "apps.analytics",
 ]
 
 MIDDLEWARE = [
